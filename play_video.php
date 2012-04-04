@@ -2,10 +2,11 @@
 
 <?php
 
-    $youtubeUrl = $POST["videoName"];
-    $COOKIES_FILE = "/var/tmp/youtube-dl-cookies.txt";
+    $youtubeUrl = $_POST["youtubeurl"];
+    $cookiesFile = "/var/tmp/youtube-dl-cookies.txt";
 
-    $result = shell_exec('mplayer -cookies -cookies-file ' . $COOKIES_FILE . ' $(youtube-dl -g --cookies ' . $COOKIES_FILE . ' ' . $youtubeUrl . ')';
+    // FIXME: browser hangs at execution
+    $result = shell_exec('mplayer -cookies -cookies-file ' . $cookiesFile . ' $(youtube-dl -g --cookies ' . $cookiesFile . ' ' . $youtubeUrl . ')');
 
     echo "<pre>$result</pre>";
-}
+?>
