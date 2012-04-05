@@ -8,4 +8,30 @@ TV. Requests to the server by client computers in the room are processed and out
 television.
 
 Current Features:
- - YouTube video launch by URL (WIP)
+ - YouTube video launch by URL
+
+SETUP (Examples in Ubuntu 11.10):
+    1. Install http web server, php, mplayer, youtube-dl
+
+        $ sudo apt-get install apache2 php5 mplayer youtube-dl
+
+    2. Create new user for web server, or use a user preferrably not in sudoer file
+
+        $ sudo useradd tvserver
+
+    3. Modify server config so that server uses above user to run
+
+        $ sudo nano /etc/apache2/envvars
+        Change APACHE_RUN_USER and APACHE_RUN_GROUP to new user name
+
+    4. Place server documents in /var/www
+
+        (assuming current directory is this repo)
+        $ sudo rm /var/www/index.html
+        $ sudo cp * /var/www/
+
+    4. Stop/start server or reboot system
+
+        $ sudo apache2ctl stop && sudo apache2ctl start
+
+    5. Login as server user
