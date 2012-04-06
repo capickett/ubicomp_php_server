@@ -9,7 +9,7 @@ television.
 
 Current Features:
  - YouTube video launch by URL
-
+ - Scrolling Images Screensaver
 SETUP (Examples in Ubuntu 11.10):
     1. Install http web server, php, mplayer, youtube-dl
 
@@ -35,3 +35,17 @@ SETUP (Examples in Ubuntu 11.10):
         $ sudo apache2ctl stop && sudo apache2ctl start
 
     5. Login as server user
+
+SETUP (Screensaver)
+
+    1. Configuration is done in the xscreensaver GUI:
+
+	$ xscreensaver-demo
+
+    2. Under Display Mode tab:
+       Select Mode: Only One Screen Saver
+       Select Screensaver: GLSlideshow
+
+    3. Under Advanced tab:
+       Select Choose Random Image and browse to the
+       directory with the images wanted in the slideshow

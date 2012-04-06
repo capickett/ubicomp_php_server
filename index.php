@@ -31,7 +31,10 @@
             Play YouTube Video: <input type="text" name="youtubeurl" title="Paste YouTube URL here..." size="40" />
             <button type="submit">PLAY</button>
         </form>
-
+	</br>
+	<form action="screensaver.php"  method="post">
+	    Display Posters: <input type="submit" name="scrsaver" value="Go!" />
+	</form>
     </body>
 
 </html>
