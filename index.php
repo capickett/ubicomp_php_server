@@ -39,8 +39,9 @@
         <form name="youtube_control" class="controlpanel" method="post">
             <button type="submit" name="action" value="PAUSE">PAUSE</button>
         </form>
-        
-
+	<form action="screensaver.php"  method="post">
+	    Display Posters: <input type="submit" name="scrsaver" value="Go!" />
+	</form>
     </body>
 
 </html>
