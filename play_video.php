@@ -12,7 +12,8 @@
     /* FIXME: User could inject shell code into form */
     $youtubeUrl = $_POST["youtubeurl"];
     $cookiesFile = "/var/tmp/youtube-dl-cookies.txt";
+    $mflags = "-fs -cookies -cache 8192 -cookies-file $cookiesFile";
+    $yflags = "-g --cookies $cookiesFile";
 
-    exec('(mplayer -fs -cookies -cookies-file ' . $cookiesFile . ' $(youtube-dl -g --cookies '
-            . $cookiesFile . ' ' . $youtubeUrl . ')) >/dev/null </dev/null &');
+    exec("mplayer $mflags $( youtube-dl $yflags $youtubeUrl ) >/dev/null </dev/null &");
 ?>
