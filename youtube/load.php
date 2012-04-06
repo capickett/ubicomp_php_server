@@ -9,11 +9,13 @@
 
 <?php
 
-    /* FIXME: User could inject shell code into form */
-    $youtubeUrl = $_POST["youtubeurl"];
+    // TODO: Export constants to a config file
+    $youtubeUrl = escapeshellarg($_POST["youtubeurl"]);
     $cookiesFile = "/var/tmp/youtube-dl-cookies.txt";
-    $mflags = "-fs -cookies -cache 8192 -cookies-file $cookiesFile";
+    $fifoFile = "~/mplayer.fifo"; // FIXME: Autocreate FIFO if non-existent
+    $mflags = "-fs -cookies -cache 8192 -slave -input file $fifoFile -cookies-file $cookiesFile";
     $yflags = "-g --cookies $cookiesFile";
+
 
     exec("mplayer $mflags $( youtube-dl $yflags $youtubeUrl ) >/dev/null </dev/null &");
 ?>

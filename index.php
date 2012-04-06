@@ -15,22 +15,31 @@
     <body>
 
 <?php
-    if(isset($_POST['youtubeurl'])) {
-        include 'play_video.php';
-?>
-
-        <pre>Loading YouTube video...</pre>
-
-<?php
+    if(isset($_POST['action'])) {
+        switch($_POST['action']) {
+        case 'PLAY':
+            include 'youtube/load.php';
+            $statusMessage = "Loading YouTube video...";
+            break;
+        case 'PAUSE':
+            include 'youtube/control.php';
+            break;
+        }
     }
 ?>
 
+        <pre><?php if(isset($statusMessage)) echo $statusMessage; ?></pre>
+
         <h1>UW UbiComp Lab TV Services</h1>
 
-        <form name="youtube" class="controlpanel" method="post">
+        <form name="youtube_load" class="controlpanel" method="post">
             Play YouTube Video: <input type="text" name="youtubeurl" title="Paste YouTube URL here..." size="40" />
-            <button type="submit">PLAY</button>
+            <button name="action" type="submit" value="PLAY">PLAY</button>
         </form>
+        <form name="youtube_control" class="controlpanel" method="post">
+            <button type="submit" name="action" value="PAUSE">PAUSE</button>
+        </form>
+        
 
     </body>
 
