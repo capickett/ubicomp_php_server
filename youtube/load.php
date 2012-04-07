@@ -9,13 +9,12 @@
 
 <?php
 
-    // TODO: Export constants to a config file
-    $youtubeUrl = escapeshellarg($_POST["youtubeurl"]);
-    $cookiesFile = "/var/tmp/youtube-dl-cookies.txt";
-    $fifoFile = "~/mplayer.fifo"; // FIXME: Autocreate FIFO if non-existent
-    $mflags = "-fs -cookies -cache 8192 -slave -input file $fifoFile -cookies-file $cookiesFile";
-    $yflags = "-g --cookies $cookiesFile";
+    require_once('../config/youtube.php');
 
+    $youtubeUrl = escapeshellarg($_POST["youtubeurl"]);
+    // FIXME: Running in Mint with gnome3 and ATI video card requires -vo xvand DISPLAY=:0.0 in the exec
+    $mflags = "-fs -cookies -cache 8192 -slave -input file=" . FIFO . " -cookies-file " . COOKIES;
+    $yflags = "-g --cookies" . COOKIES;
 
     exec("mplayer $mflags $( youtube-dl $yflags $youtubeUrl ) >/dev/null </dev/null &");
 ?>

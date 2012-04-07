@@ -8,14 +8,12 @@
 
 <?php
 
-    // FIXME: Autocreate FIFO if not existent
-
-    $FIFO = "~/mplayer.fifo"; // TODO: Export constants to a cfg
+    require_once('../config/youtube.php');
 
     switch($_POST['action']) {
     case 'PAUSE':
-        // FIXME: server hangs
-//        exec('echo "pause" > ' . $FIFO);
+        // XXX: Requires further testing
+        exec('echo "pause" > ' . FIFO . ' &');
         $statusMessage = "Pausing YouTube video...";
         break;
     }
