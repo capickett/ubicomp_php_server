@@ -9,6 +9,7 @@
 
     <head>
         <title>UW UBICOMP LAB TV SERVER</title>
+        <link rel="stylesheet" type="text/css" href="styles/index.css" />
     </head>
 
     <body>
@@ -33,17 +34,23 @@
         <?php if(isset($statusMessage)) echo "<pre>$statusMessage</pre>"; ?>
         <h1>UW UbiComp Lab TV Services</h1>
 
-        <form name="youtube_load" class="controlpanel" method="post">
-            Play YouTube Video: <input type="text" name="youtubeurl" title="Paste YouTube URL here..." size="40" />
-            <button name="action" type="submit" value="PLAY">PLAY</button>
-        </form>
-        <form name="youtube_control" class="controlpanel" method="post">
-            <button type="submit" name="action" value="PAUSE">PAUSE/RESUME</button>
-        </form>
-	<form name="display_posters" class="controlpanel"  method="post">
-	    Display Posters: 
-	    <button name="action" type="submit" value="SCRSAVER">Go!</button>
-	</form>
-    </body>
+        <div class="controlpanel">
+            <fieldset>
+                <legend>YouTube</legend>
+                <form name="youtube_load" method="post">
+                    <label for="youtubeurl">Play URL:</label> <input type="text" id="youtubeurl" name="youtubeurl" title="Paste YouTube URL here..." size="40" />
+                    <button name="action" type="submit" value="PLAY">PLAY</button>
+                    <button type="submit" name="action" value="PAUSE">PAUSE/RESUME</button>
+                </form>
+            </fieldset> <!-- .controlsection -->
+            <fieldset>
+                <legend>Screensaver</legend>
+                <form action="screensaver.php"  method="post">
+                    <label for="scrsaver">Display Posters:</label> <button name="action" type="submit" value="SCRSAVER">Go!</button>
+                </form>
+            </fieldset> <!-- .controlsection -->
+        </div> <!-- .controlpanel -->
+        <div id="copynotice">&copy; Copyright 2012 Patrick Larson, <a href="http://synrgi.wordpress.com">Cameron Pickett</a></div>
+</body>
 
 </html>
