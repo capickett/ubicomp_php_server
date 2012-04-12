@@ -16,6 +16,12 @@ echo "y" | yum update
 
 echo "y" | yum -y --enablerepo=remi install httpd php php-common
 
+# Move files from repo to web directory #
+ 
+mv ./* /var/www/html
+
+# turn on php #
+
 /etc/init.d/httpd start
 
 chkconfig --levels 235 httpd on
