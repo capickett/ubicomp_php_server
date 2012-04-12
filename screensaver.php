@@ -10,5 +10,5 @@
 -->
 
 <?php
-	
-	exec('(xscreensaver-command activate)');
+	exec('(xscreensaver-command -activate)');
+?>

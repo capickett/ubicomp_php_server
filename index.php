@@ -13,22 +13,24 @@
 
     <body>
 
-        <?php
-            if(isset($_POST['action'])) {
-                switch($_POST['action']) {
-                case 'PLAY':
-                    include 'youtube/load.php';
-                    $statusMessage = "Loading YouTube video...";
-                    break;
-                case 'PAUSE':
-                    include 'youtube/control.php';
-                    break;
-                }
-            }
-        ?>
+<?php
+    if(isset($_POST['action'])) {
+        switch($_POST['action']) {
+        case 'PLAY':
+            include 'youtube/load.php';
+            $statusMessage = "Loading YouTube video...";
+            break;
+        case 'PAUSE':
+            include 'youtube/control.php';
+            break;
+	case 'SCRSAVER':
+	    include 'screensaver.php';
+	    break;        
+}
+    }
+?>
 
         <?php if(isset($statusMessage)) echo "<pre>$statusMessage</pre>"; ?>
-
         <h1>UW UbiComp Lab TV Services</h1>
 
         <form name="youtube_load" class="controlpanel" method="post">
@@ -38,8 +40,9 @@
         <form name="youtube_control" class="controlpanel" method="post">
             <button type="submit" name="action" value="PAUSE">PAUSE/RESUME</button>
         </form>
-	<form action="screensaver.php"  method="post">
-	    Display Posters: <input type="submit" name="scrsaver" value="Go!" />
+	<form name="display_posters" class="controlpanel"  method="post">
+	    Display Posters: 
+	    <button name="action" type="submit" value="SCRSAVER">Go!</button>
 	</form>
     </body>
 
