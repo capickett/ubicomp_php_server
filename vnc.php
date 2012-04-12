@@ -9,5 +9,7 @@
     # Make sure xscreensaver is running, rather than the gnome-screensaver
     # daemon
 
-    exec('(xscreensaver-command -activate)');
+    $ipAddress = $_POST['vncip'];
+    $dispPort = $_POST['vncdisplayport'];
+    exec("vncviewer $ipAddress:$dispPort");
 ?>

@@ -24,10 +24,13 @@
         case 'PAUSE':
             include 'youtube/control.php';
             break;
-	case 'SCRSAVER':
-	    include 'screensaver.php';
-	    break;        
-}
+        case 'SCRSAVER':
+            include 'screensaver.php';
+            break;
+        case 'VNC':
+            include 'vnc.php';
+            break;
+        }
     }
 ?>
 
@@ -43,14 +46,24 @@
                     <button type="submit" name="action" value="PAUSE">PAUSE/RESUME</button>
                 </form>
             </fieldset> <!-- .controlsection -->
+
             <fieldset>
                 <legend>Screensaver</legend>
-                <form action="screensaver.php"  method="post">
+                <form name="screensaver"  method="post">
                     <label for="scrsaver">Display Posters:</label> <button name="action" type="submit" value="SCRSAVER">Go!</button>
                 </form>
             </fieldset> <!-- .controlsection -->
+
+            <fieldset>
+                <legend>Share Screen</legend>
+                <form name="vnc" method="post">
+                    <label for="vncip">IP Address:</label> <input type="text" id="vncip" name="vncip" title="Your IP address" size="20" value="<?= $_SERVER['REMOTE_ADDR'] ?>" />
+                    <label for="vncdisplayport">Display Port:</label> <input type="text" id="vncdisplayport" name="vncdisplayport" title="Display port (default 1)" size="5" value="1" />
+                    <button name="action" type="submit" value="VNC">Connect</button>
+                <form>
+            </fieldset>
         </div> <!-- .controlpanel -->
         <div id="copynotice">&copy; Copyright 2012 Patrick Larson, <a href="http://synrgi.wordpress.com">Cameron Pickett</a></div>
-</body>
+    </body>
 
 </html>
