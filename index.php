@@ -45,14 +45,14 @@
                     <button name="action" type="submit" value="PLAY">PLAY</button>
                     <button type="submit" name="action" value="PAUSE">PAUSE/RESUME</button>
                 </form>
-            </fieldset> <!-- .controlsection -->
+            </fieldset>
 
             <fieldset>
                 <legend>Screensaver</legend>
                 <form name="screensaver"  method="post">
                     <label for="scrsaver">Display Posters:</label> <button name="action" type="submit" value="SCRSAVER">Go!</button>
                 </form>
-            </fieldset> <!-- .controlsection -->
+            </fieldset>
 
             <fieldset>
                 <legend>Share Screen</legend>

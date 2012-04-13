@@ -10,6 +10,7 @@ television.
 Current Features:
  - YouTube video launch by URL
  - Scrolling Images Screensaver
+
 SETUP (Examples in Ubuntu 11.10):
     1. Install http web server, php, mplayer, youtube-dl
 
