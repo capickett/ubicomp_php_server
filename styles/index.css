@@ -54,7 +54,7 @@ legend {
     top: -0.25em;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
     border: 1px LightGray solid;
     border-radius: 2px;
     height: 1.5em;

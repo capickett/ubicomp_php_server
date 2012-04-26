@@ -9,7 +9,12 @@
     # Make sure xscreensaver is running, rather than the gnome-screensaver
     # daemon
 
-    $ipAddress = $_POST['vncip'];
-    $dispPort = $_POST['vncdisplayport'];
-    exec("vncviewer $ipAddress:$dispPort");
+    if($_POST['action'] == 'VNC') {
+        $ipAddress = $_POST['vncip'];
+        $dispPort = $_POST['vncdisplayport'];
+        $passwd = $_POST['vncpasswd'];
+        exec("echo "$passwd" | vncviewer $ipAddress:$dispPort -fullscreen -autopass &");
+    } else {
+        exec("killall vncviewer &");
+    }
 ?>

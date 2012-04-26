@@ -8,7 +8,7 @@
 
     # FIFO:
     #     The location of the fifo for controlling the server
-    const FIFO = '/home/synrgi/mplayer.fifo'; // TODO: Set up fifo in install script
+    const FIFO = './mplayer.fifo'; // TODO: Set up fifo in install script
 
     # COOKIES_FILE:
     #     The location of the file storing the cookies shared between mplayer
