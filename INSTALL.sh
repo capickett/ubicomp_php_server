@@ -45,3 +45,8 @@ killall gnome-screensaver
 # schedule install part two on reboot
 
 echo "@reboot ./INSTALL_NEW_USER.sh" > install.tmp && crontab -u tvserver install.tmp && rm -f install.tmp
+
+# finished
+
+echo "Installation part one complete, to finish the installation, please "
+echo "reboot and login as tvserver"
