@@ -63,7 +63,6 @@
                 <form>
             </fieldset>
         </div> <!-- .controlpanel -->
-        <div id="copynotice">&copy; Copyright 2012 Patrick Larson, <a href="http://synrgi.wordpress.com">Cameron Pickett</a></div>
     </body>
 
 </html>
