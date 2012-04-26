@@ -1,9 +1,5 @@
 #!/bin/bash 
 
-# Move files from repo to web directory #
-
-mv ./* /var/www/html
-
 # install needed repos and update yum #
 
 echo "y" | yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
@@ -18,7 +14,7 @@ echo "y" | yum -y --enablerepo=remi install httpd php php-common
 
 # Move files from repo to web directory #
  
-mv ./* /var/www/html
+cp ./* /var/www/html
 
 # turn on php #
 
@@ -32,7 +28,11 @@ useradd tvserver
 
 echo -e "ubicomp\nubicomp" | passwd tvserver
 
-# TODO: Change server user and group #
+cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak
+
+sed -ie 's|\(User\) apache|\1 tvserver|' /etc/httpd/conf/httpd.conf
+
+sed -ie 's|\(Group\) apache|\1 tvserver|' /etc/httpd/conf/httpd.conf
 
 # install programs needed by web app and remove gnome-screensaver #
 
@@ -40,13 +40,8 @@ echo "y" | yum -y install mplayer youtube-dl xscreensaver
 
 echo "y" | yum remove gnome-screensaver.i686
 
-# start xscreensaver and configure the configuration file #
+killall gnome-screensaver
 
-xscreensaver &
-sleep 10000
-sed -ie 's|\(grabDesktopImages: \).*|\1false|' .xscreensaver
-sed -ie 's|\(grabVideoFrames: \).*|\1false|' .xscreensaver
-sed -ie 's|\(chooseRandomImages: \).*|\1true|' .xscreensaver
-sed -ie 's|\(imageDirectory: \).*|\1\./images/|' .xscreensaver
-sed -ie 's|\(mode: \).*|\1one|' .xscreensaver
-sed -ie 's|\(selected: \).*|\1142|' .xscreensaver
+# schedule install part two on reboot
+
+echo "@reboot ./INSTALL_NEW_USER.sh" > install.tmp && crontab -u tvserver install.tmp && rm -f install.tmp
