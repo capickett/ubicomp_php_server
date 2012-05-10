@@ -2,9 +2,9 @@
  
 # install needed programs and repos
 
-rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-s    table.noarch.rpm
+rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
  
-rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rel    ease-stable.noarch.rpm
+rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
  
 echo "y" | yum install httpd php xscreensaver youtube-dl mplayer
 
@@ -38,7 +38,9 @@ killall gnome-screensaver
 
 # schedule install part two on reboot
 
-echo "@reboot ./INSTALL_NEW_USER.sh" > install.tmp && crontab -u tvserver install.tmp && rm -f install.tmp
+cp ./INSTALL_NEW_USER.sh /home/tvserver/.INSTALL_NEW_USER.sh
+
+echo "@reboot ~/.INSTALL_NEW_USER.sh" > install.tmp && crontab -u tvserver install.tmp && rm -f install.tmp
 
 # finished
 

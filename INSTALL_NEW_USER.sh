@@ -28,3 +28,5 @@ sed -ie 's|\(selected: \).*|\1142|' ~/.xscreensaver
 # remove self from crontab
 
 crontab -r
+
+rm ~/.INSTALL_NEW_USER.sh
