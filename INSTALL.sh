@@ -1,16 +1,12 @@
 #!/bin/bash 
+ 
+# install needed programs and repos
 
-# install needed repos and update yum #
-
-echo "y" | yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
-
-rpm -Uvh http://rpms.famillecollet.com/remi-release-16.rpm
-
-echo "y" | yum update
-
-# install and configure php and apache #
-
-echo "y" | yum -y --enablerepo=remi install httpd php php-common
+rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-s    table.noarch.rpm
+ 
+rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rel    ease-stable.noarch.rpm
+ 
+echo "y" | yum install httpd php xscreensaver youtube-dl mplayer
 
 # Move files from repo to web directory #
  
@@ -34,9 +30,7 @@ sed -ie 's|\(User\) apache|\1 tvserver|' /etc/httpd/conf/httpd.conf
 
 sed -ie 's|\(Group\) apache|\1 tvserver|' /etc/httpd/conf/httpd.conf
 
-# install programs needed by web app and remove gnome-screensaver #
-
-echo "y" | yum -y install mplayer youtube-dl xscreensaver
+# remove gnome-screensaver #
 
 echo "y" | yum remove gnome-screensaver.i686
 
