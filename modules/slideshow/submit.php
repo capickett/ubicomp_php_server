@@ -10,4 +10,4 @@
     # daemon
 
     exec('(xscreensaver-command -activate)');
-?>
+    $statusMessage = "Activating screensaver...";

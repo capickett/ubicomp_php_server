@@ -1,0 +1,14 @@
+TV PHP Media Server
+(c) Copyright 2012 Patrick Larson, Cameron Pickett
+UW CSE, UbiComp Research Group
+
+Server log directory
+
+Output any necessary logs to this directory in the following format:
+
+    [MODULE_NAME]_[FILE_NAME].log
+
+For example, if log output is created from 'form.php' within the module 'foo',
+your log output should then be sent to:
+
+    foo_form.log
