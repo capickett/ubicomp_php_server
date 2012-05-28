@@ -6,9 +6,11 @@ Server log directory
 
 Output any necessary logs to this directory in the following format:
 
-    [MODULE_NAME]_[FILE_NAME].log
+    [MODULE_NAME]_[FILE_NAME]_[TIMESTAMP].log
+    
+    where TIMESTAMP follows the following format: 'dmy-Hi-u'
 
 For example, if log output is created from 'form.php' within the module 'foo',
 your log output should then be sent to:
 
-    foo_form.log
+    foo_form_050712-1351-654321.log

@@ -10,17 +10,13 @@
 
 require_once "{$CONFIG['MODULE_youtube']['CONFIG_DIR']}/config.php";
 
-switch($_POST['action']) {
+switch($_GET['action']) {
 case 'PLAY':
-    $youtubeUrl = escapeshellarg($_POST["youtubeurl"]);
-    # FIXME: Running in Mint with gnome3 and ATI video card requires -vo xvand DISPLAY=:0.0 in the exec
-    $mflags = "-fs -cookies -cache 8192 -slave -input file=" . $FIFO . " -cookies-file " . $COOKIES;
-    $yflags = "-g --cookies " . $COOKIES;
-    exec("mplayer $mflags $( youtube-dl $yflags $youtubeUrl ) >/dev/null </dev/null &");
+    play_video();
     $statusMessage = "Loading YouTube video...";
     break;
 case 'PAUSE':
-    exec('echo "pause" > ' . $FIFO . ' &');
+    exec('echo "pause" > ' . $FIFO);
     $statusMessage = "Pausing YouTube video...";
     break;
 case 'MUTE':
@@ -32,7 +28,7 @@ case 'UNMUTE':
     $statusMessage = "Unmuting YouTube video...";
     break;
 case 'GOTO':
-    $seekPercentage = $_POST['seek'];
+    $seekPercentage = $_GET['seek'];
     exec('echo "seek ' . $seekPercentage . ' 1" > ' . $FIFO . ' &');
     $statusMessage = "Going to $seekPercentage% of the video...";
     break;
@@ -64,4 +60,16 @@ case 'VOLDOWN':
     exec('echo "volume -10 0" > ' . $FIFO . ' &');
     $statusMessage = "Decreasing volume...";
     break;
+}
+
+function play_video() {
+    global $CONFIG;
+    global $FIFO;
+    global $COOKIES;
+    $ts = date($CONFIG['LOG_TS']);
+    $youtubeUrl = escapeshellarg($_GET["youtubeurl"]);
+    # FIXME: Running in Mint with gnome3 and ATI video card requires -vo xvand DISPLAY=:0.0 in the exec
+    $mflags = "-fs -cookies -cache 8192 -slave -input file=$FIFO -cookies-file $COOKIES";
+    $yflags = "-g --cookies " . $COOKIES;
+    exec("mplayer $mflags $( youtube-dl $yflags $youtubeUrl ) >> logs/youtube_submit_$ts.log 2>> logs/youtube_submit_$ts.log &");
 }

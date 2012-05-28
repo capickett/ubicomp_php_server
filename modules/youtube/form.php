@@ -1,6 +1,6 @@
 <fieldset>
     <legend>YouTube</legend>
-    <form name="youtube_load" method="post">
+    <form name="youtube_load" method="get">
         <input type="hidden" name="module" value="youtube" />
         <div>
             <label for="youtubeurl">Play URL:</label> <input type="text" id="youtubeurl" name="youtubeurl" title="Paste YouTube URL here..." size="40" />

@@ -8,10 +8,9 @@
 
 # FIFO:
 #     The location of the fifo for controlling the server
-$FIFO = './mplayer.fifo'; // TODO: Set up fifo in install script
+$FIFO = "{$_SERVER['DOCUMENT_ROOT']}{$CONFIG['MODULE_youtube']['ROOT_DIR']}/mplayer.fifo";
 
 # COOKIES_FILE:
 #     The location of the file storing the cookies shared between mplayer
 #     and youtube-dl
-#
 $COOKIES = '/var/tmp/youtube-dl-cookies.txt';

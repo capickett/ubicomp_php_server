@@ -16,7 +16,7 @@ $RECEIVE_FOLDER = "DROPitTOme";
 
 ##
 # [LFILES_LIST]
-#     Number of latest files to list on page
+#     Number of latest files to list per page
 ##
 
-$LFILES_LIST = 5;
+$LFILES_LIST = 10;
