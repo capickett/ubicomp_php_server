@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', '1');
+require_once 'config/config.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +15,15 @@
     <head>
         <title>UW UBICOMP LAB TV SERVER</title>
         <link rel="stylesheet" type="text/css" href="styles/index.css" />
+        <?php
+        foreach ($CONFIG['MODULE_LOAD_ORDER'] as $module) {
+            foreach (glob($CONFIG["MODULE_$module"]["STYLES_DIR"] . '/*.css') as $style) {
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?= $style ?>" />
+        <?php
+            }
+        }
+        ?>
     </head>
 
     <body>

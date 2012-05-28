@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', '1');
-require_once 'config/config.php';
 
 if (isset($_POST['module'])) {
     include "modules/{$_POST['module']}/submit.php";

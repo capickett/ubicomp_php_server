@@ -27,11 +27,12 @@ foreach (glob('modules/*/') as $module) {
 
 ##
 # [MODULE_*]
-#     Dynamically load module's root directory and config directory for convenience
+#     Dynamically load module's root, config, and styles directories for convenience
 ##
 foreach ($CONFIG['MODULE_LOAD_ORDER'] as $module) {
     $CONFIG['MODULE_' . $module] = array(
         'ROOT_DIR' => 'modules/' . $module,
-        'CONFIG_DIR' => 'modules/' . $module . '/config'
+        'CONFIG_DIR' => 'modules/' . $module . '/config',
+        'STYLES_DIR' => 'modules/' . $module . '/styles'
     );
 }
