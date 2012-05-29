@@ -33,7 +33,7 @@ $limit = count($latest_files) < $start + $LFILES_LIST ? count($latest_files) : $
         ?>
         <li>
             <a href="<?= "{$CONFIG['MODULE_dropbox']['ROOT_DIR']}/read_received.php?f=" . basename($file) ?>" target="_blank"><?= basename($file) ?>
-            <span class="dropbox_modify">(<?= date("g:ia, D M jS, Y", $time) ?>)</span></a>
+            <span class="dropbox_modify">(<?= date("g:ia, M jS, Y", $time) ?>)</span></a>
         </li>
         <?php
             }

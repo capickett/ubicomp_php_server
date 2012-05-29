@@ -12,7 +12,7 @@
         <input type="hidden" name="module" value="vnc" />
         <ol>
             <li><button name="action" type="submit" value="VNCLISTEN">Start Server Viewer</button></li>
-            <li>User your own installed vnc program, connect to IP <code><?= $_SERVER['SERVER_ADDR'] ?></code> on PORT <code>5500</code></li>
+            <li>Using your own installed VNC program, connect to IP <code><?= $_SERVER['SERVER_ADDR'] ?></code> on PORT <code>5500</code></li>
         </ol>
     </form>
 </fieldset>
