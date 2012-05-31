@@ -31,9 +31,11 @@ $limit = count($latest_files) < $start + $LFILES_LIST ? count($latest_files) : $
             }
             if ($i >= $start) {
         ?>
-        <li>
-            <a href="<?= "{$CONFIG['MODULE_dropbox']['ROOT_DIR']}/read_received.php?f=" . basename($file) ?>" target="_blank"><?= basename($file) ?>
-            <span class="dropbox_modify">(<?= date("g:ia, M jS, Y", $time) ?>)</span></a>
+        <li class="dropbox">
+            <a href="<?= "{$CONFIG['MODULE_dropbox']['ROOT_DIR']}/read_received.php?f=" . basename($file) ?>" target="_blank">
+                <span class="dropbox_file"><?= basename($file) ?></span>
+                <span class="dropbox_modify">(<?= date("g:ia, M jS, Y", $time) ?>)</span>
+            </a>
         </li>
         <?php
             }
@@ -46,5 +48,4 @@ $limit = count($latest_files) < $start + $LFILES_LIST ? count($latest_files) : $
         <a href="?dropbox_page=<?= $i ?>"><?= $i + 1 ?></a>
         <? } ?>
     </div>
-
 </fieldset>

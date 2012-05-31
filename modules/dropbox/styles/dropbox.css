@@ -1,3 +1,15 @@
+li.dropbox {
+    position: relative;
+}
+
 .dropbox_modify {
-    float: right;
+    position: absolute;
+    right: 0;
+    background-color: White;
+}
+
+.dropbox_file {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

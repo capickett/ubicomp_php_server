@@ -14,7 +14,7 @@ if (preg_match("/\.\./", $file)) {
 
 $ext = explode('.', $file);
 
-switch($ext[1]) {
+switch(strtolower($ext[1])) {
     case 'gif': $ct = 'image/gif'; break;
     case 'jpg': case 'jpeg': $ct = 'image/jpeg'; break;
     case 'pdf': $ct = 'application/pdf'; break;
