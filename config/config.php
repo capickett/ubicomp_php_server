@@ -13,31 +13,25 @@ $CONFIG['LOG_TS'] = 'dmy-Hi';
 ##
 
 ##
-# [MODULE_LOAD_ORDER]
+# [MODS]
 #     Modules listed below are loaded in order by index
-#     Modules located in modules/ are loaded in undefined order
+#     Modules located in modules-enabled/ are loaded in undefined order
 ##
-$CONFIG['MODULE_LOAD_ORDER'] = array(
-    'youtube',
-    'slideshow',
-    'vnc'
+$CONFIG['MODS'] = array(
+#    'youtube',
+#    'slideshow',
+#    'vnc'
 );
 
 # Dynamically load un-listed modules
-foreach (glob('modules/*/') as $module) {
-    if (!in_array(basename($module), $CONFIG['MODULE_LOAD_ORDER'])) {
-        $CONFIG['MODULE_LOAD_ORDER'][] = basename($module);
+foreach (glob('modules-enabled/*/') as $module) {
+    if (!in_array(basename($module), $CONFIG['MODS'])) {
+        $CONFIG['MODS'][] = basename($module);
     }
 }
 
-##
-# [MODULE_*]
-#     Dynamically load module's root, config, and styles directories for convenience
-##
-foreach ($CONFIG['MODULE_LOAD_ORDER'] as $module) {
-    $CONFIG['MODULE_' . $module] = array(
-        'ROOT_DIR' => 'modules/' . $module,
-        'CONFIG_DIR' => 'modules/' . $module . '/config',
-        'STYLES_DIR' => 'modules/' . $module . '/styles'
-    );
-}
+# Module constants
+$MOD_EN     = 'modules-enabled';
+$MOD_DIS    = 'modules';
+$CONFIG_DIR = 'config'; # Module-specific configuration sub-dir
+$STYLES_DIR = 'styles'; # Module-specific configuration sub-dir
