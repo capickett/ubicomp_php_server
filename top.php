@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<?php ini_set('display_errors', '1'); ?>
+<?php
+# TV PHP Media Server
+# (c) Copyright 2012 Patrick Larson, Cameron Pickett
+# UW CSE, UbiComp Research Group
+
+# ini_set('display_errors', '1'); 
+?>
 <html>
 
     <!--

@@ -1,4 +1,8 @@
 <?php
+# TV PHP Media Server
+# (c) Copyright 2012 Patrick Larson, Cameron Pickett
+# UW CSE, UbiComp Research Group
+
 include '../top.php';
 require_once 'config/config.php';
 ?>
